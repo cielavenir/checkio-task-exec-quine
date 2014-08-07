@@ -51,7 +51,7 @@ class CheckioRefereeCode(CheckiOReferee):
         if data['result']==self.code:
             return api.success(0)
         else:
-		    return api.fail(0,'quine() returned different string.')
+            return api.fail(0,'quine() returned different string.')
 
 api.add_listener(
     ON_CONNECT,
