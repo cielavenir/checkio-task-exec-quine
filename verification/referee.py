@@ -34,9 +34,8 @@ from checkio.referees import checkers
 
 from tests import TESTS
 
-class CheckioRefereeCode(CheckiOReferee):
-    def __init__(self, max_length, **kwargs):
-        self.max_length = max_length
+class CheckiORefereeCode(CheckiOReferee):
+    def __init__(self, **kwargs):
         super().__init__(**kwargs)
     def check_current_test(self, data):
         if self.inspector:
