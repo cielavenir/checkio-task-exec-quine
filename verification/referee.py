@@ -50,10 +50,10 @@ class CheckiORefereeCode(CheckiOReferee):
         if data['result']==self.code:
             return api.success(0)
         else:
-			message = 'quine() returned different string.'
-			self.current_test["inspector_result_addon"] = message
-			self.current_test["inspector_fail"] = True
-			api.request_write_ext(self.current_test)
+            message = 'quine() returned different string.'
+            self.current_test["inspector_result_addon"] = message
+            self.current_test["inspector_fail"] = True
+            api.request_write_ext(self.current_test)
             return api.fail(0,message)
 
 api.add_listener(
