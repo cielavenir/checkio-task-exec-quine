@@ -38,22 +38,12 @@ class CheckiORefereeCode(CheckiOReferee):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
     def check_current_test(self, data):
-        if self.inspector:
-            inspector_result, inspector_result_addon = self.inspector(self.code, self.runner)
-            self.inspector = None
-            self.current_test["inspector_result_addon"] = inspector_result_addon
-            if not inspector_result:
-                self.current_test["inspector_fail"] = True
-                api.request_write_ext(self.current_test)
-                return api.fail(0, inspector_result_addon)
-        #check_result = self.check_user_answer(user_result) #eh?
         self.current_test["code"] = self.code
         if data['result'] == self.code:
             return api.success(0)
         else:
             message = 'quine() returned different string.'
-            self.current_test["inspector_result_addon"] = message
-            self.current_test["inspector_fail"] = True
+            self.current_test["result_addon"] = message
             api.request_write_ext(self.current_test)
             return api.fail(0, message)
 
