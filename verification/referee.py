@@ -39,10 +39,14 @@ class CheckiORefereeCode(CheckiOReferee):
         super().__init__(**kwargs)
     def check_current_test(self, data):
         self.current_test["code"] = self.code
+
         if data['result'] == self.code:
+            self.current_test["result"] = True
+            api.request_write_ext(self.current_test)
             return api.success(0)
         else:
             message = 'quine() returned different string.'
+            self.current_test["result"] = False
             self.current_test["result_addon"] = message
             api.request_write_ext(self.current_test)
             return api.fail(0, message)

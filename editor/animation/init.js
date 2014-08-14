@@ -71,8 +71,7 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210', 'snap.svg_030'],
             if (data.ext) {
                 var userResult = data.out;
                 var result = data.ext["result"];
-                var result_addon = data.ext["result_addon"];
-                var user_code = data.ext["code"];
+                var result_message = data.ext["result_addon"];
 
                 //if you need additional info from tests (if exists)
 
